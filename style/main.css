@@ -1,0 +1,125 @@
+body {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    background-color: black;
+    text-align: center;
+    color: #fff;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', Verdana, sans-serif;
+}
+
+header {
+    height: 100vh;
+    width: 100%;
+}
+
+.cols {
+    margin: 5%;
+}
+
+.search {
+    text-align: center;
+    padding-top: 4%;
+}
+
+input {
+    padding: 0.7% 7%;
+    margin-left: -2%;
+}
+
+.btn {
+    background-color: seashell;
+    /* padding: 10px 20px; */
+    padding: 0.8% 1.6%;
+    color: rgb(0, 167, 72);
+    border: 2px solid rgb(0, 167, 72);
+    margin-left: 5px;
+    border-radius: 5px;
+    border-radius: 3px 5px;
+}
+
+button:hover {
+    background-color: rgb(0, 167, 72);
+    color: seashell;
+}
+
+.navbar {
+    height: 60px;
+}
+
+img {
+    padding: 10px;
+}
+
+.navbar img {
+    float: left;
+    padding-left: 20px;
+    display: inline;
+}
+
+.menu-items {
+    display: inline;
+    float: right;
+    padding: 20px 40px 30px 0px;
+}
+
+.nav-items {
+    display: inline;
+}
+
+.nav-items li {
+    display: inline;
+    text-decoration: none;
+    list-style: none;
+    padding: 40px 20px 0px 30px;
+}
+
+.btn-dummy {
+    padding: 7px 12px;
+    background-image: linear-gradient(to right, #E55D87 0%, #5FC3E4 51%, #E55D87 100%);
+    border-radius: 3px;
+    border: none;
+}
+
+.btn-dummy:hover {
+    background-position: right center;
+}
+
+.nav-items li a {
+    color: #fff;
+    text-decoration: none;
+    padding-bottom: 3px;
+    color: #fff;
+}
+
+.nav-items li a:hover {
+    background: -webkit-linear-gradient(#E55D87, #5FC3E4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom: 2px solid snow;
+    line-height: 9px;
+}
+
+span {
+    background: -webkit-linear-gradient(#E55D87, #5FC3E4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#explore {
+    font-size: 40px;
+    text-align: left;
+    padding-left: 10%;
+}
+
+@media screen and (max-width: 1067px) {
+    .nav-items {
+        display: none;
+    }
+}
+
+#footer {
+    height: 20vh;
+    width: 100%;
+    margin-top: 2%;
+}

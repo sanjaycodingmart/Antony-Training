@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>YIFY API</title>
+    <link rel="stylesheet" href="./style/main.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <img src="./images/images.png" alt="" height="80" width="170">
+            <div class="menu-items">
+                <ul class="nav-items">
+                    <li class="underline"><a href="">Reaction</a></li>
+                    <li class="underline"><a href="">Entertainment</a></li>
+                    <li class="underline"><a href="">Sports</a></li>
+                    <li class="underline"><a href="">Stickers</a></li>
+                    <li class="underline"><a href="">Artist</a></li>
+                    <li><button class="btn-dummy">Upload</button></li>
+                    <li><button class="btn-dummy">Create</button></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="search">
+            <input type="text" name="" id="search" placeholder="Enter GIF to search" required/>
+            <button class="btn" type="submit" onclick="searched()">Search</button>
+        </div>
+        <h1 id="explore">Explore More <span>GIF</span></h1>
+        <div class="cols" id="cols" onscroll="scrolling()">
+        </div>
+        <div id="footer">
+            <h1>Developed by <span>GIPHY</span></h1>
+        </div>
+    </header>
+    <script src="./app.js"></script>
+</body>
+
+</html>
