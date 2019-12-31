@@ -26,7 +26,8 @@ const Modal = ({updateUserHandler}) => {
         // updateUserHandler(user);
         setUser({
             ...user,
-            languages: []
+            languages: [],
+            favourites: []
         })
         setSignup(false);
     }
@@ -89,7 +90,7 @@ const Modal = ({updateUserHandler}) => {
                 {toShow}
                 <div className="modal-footer">
                     {
-                        signup ? <button type="button" className="btn btn-success" onClick={submitHandler}> SignUp</button> :  <button type="button" className="btn btn-success" onClick={addUSerHandler}> Finish</button>
+                        signup ? <button type="button" className="btn btn-success" onClick={submitHandler}> SignUp</button> :  <button type="button" className="btn btn-success" onClick={addUSerHandler} data-dismiss="modal"> Finish</button>
                     }
                     
                     <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>

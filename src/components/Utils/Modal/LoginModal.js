@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import ModalInput from '../InputFeild/InputModal';
 
-const Modal = ({users}) => {
+const Modal = ({users, AuthUserHandler}) => {
 
     const [user, setUser] = useState({});
 
@@ -16,6 +16,7 @@ const Modal = ({users}) => {
             if(Existuser['E-mail'] === user['E-mail']) {
                 if(Existuser['Password'] === user['Password']) {
                     alert('login successful');
+                    AuthUserHandler(Existuser);
                 }
             }
         });
