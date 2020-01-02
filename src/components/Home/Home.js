@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import InputFelid from './Utils/InputFeild';
 import CustomSuggestion from './Custom/CustomSuggestion';
 import Artist from './Custom/Artist';
-
+import Spinner from '../Gif/Spinner.gif';
+import Author from './Search/Author';
 
 class Home extends Component {
     state = {
@@ -12,8 +13,9 @@ class Home extends Component {
     }
 
     UNSAFE_componentWillMount = async () =>  {
+        const language = this.props.user.languages[0];
         try {
-            const response = await fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=English", {
+            const response = await fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${language}`, {
                 "method": "GET",
                 "headers": {
                     "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
@@ -26,21 +28,36 @@ class Home extends Component {
             console.log(err.message);
         }
     }
-    inputHandler = event => this.setState({search: event.target.value});
+
+    submitHandler = search => this.setState({search});
+
     render() {
         const {search, data, isLoading} = this.state;
 
         if(isLoading) {
-            return <p>Loading . . .</p>
+            return (
+                <div style={{height: '90vh', width: '100vw', display: 'flex', alignContent: 'center', alignItems: 'center',textAlign:'center',justifyContent:'center'}}>
+                    <img src={Spinner} height= "100" width="100"/>
+                </div>
+            )
         }
         const artist = data.splice(0,10);
         const tiles = data.splice(0,25);
         return (
             <div style={{margin: '0', padding: '0'}}>
-                <InputFelid inputHander={this.inputHandler} search={search}/>
-                <div style={{margin: '40px 8vw'}}>
-                    <CustomSuggestion tiles={tiles}/>
-                    <Artist artist={artist}/>
+                <InputFelid submitHandler={this.submitHandler}/>
+                <div>
+                    <div style={{margin: '40px 6vw'}}>
+                    {
+                        search === '' ? (
+                            <Fragment>
+                                <CustomSuggestion tiles={tiles} lang = {this.props.user.languages[0]}/>
+                                <Artist artist={artist} favouritesHandler={this.props.favouritesHandler}/>
+                            </Fragment>
+                        ) : <Author search={search}/>
+                    }
+                        
+                    </div>
                 </div>
             </div>
         )

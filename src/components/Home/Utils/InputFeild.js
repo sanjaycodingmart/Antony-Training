@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-const InputFeild = ({inputHander, search}) => {
+const InputFeild = ({submitHandler}) => {
+    const [input, setInput] = useState('');
     const styles = {
         container : {
             textAlign: 'center', 
@@ -24,10 +25,11 @@ const InputFeild = ({inputHander, search}) => {
         }
     }
     const searchIcon = <i class="fa fa-search" aria-hidden="true"></i>;
+    const inputHandler = event => setInput(event.target.value);
     return (
         <div className="container" style={styles.container}>
-                <input type="text" style={styles.input} placeholder='Search for Artist, Music, Podcast . . .'></input>
-                <button className="btn" style={styles.btn}>{searchIcon} Search</button>
+                <input type="text" style={styles.input} placeholder='Search for Artist, Music, Podcast . . .' value={input} onChange={inputHandler}></input>
+                <button className="btn" style={styles.btn} onClick={()=>submitHandler(input)}>{searchIcon} Search</button>
         </div>
     )
 }

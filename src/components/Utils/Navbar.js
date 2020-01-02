@@ -1,10 +1,10 @@
-import React, {useState}  from 'react'
+import React  from 'react'
 import Logo from '../../Image/Logo.png';
-import LoginModal from '../Utils/Modal/LoginModal';
-import SignupModal from '../Utils/Modal/SignupModal';
+import LoginModal from './Modal/LoginModal';
+import SignupModal from './Modal/SignupModal';
 
-
-const Navbar = ({updateUserHandler, users, AuthUserHandler, user, isAuthenticated}) => {
+const Navbar = ({updateUserHandler, users, AuthUserHandler, isAuthenticated}) => {
+    console.log(isAuthenticated)
 
     const styles = {
         navbar: {
@@ -18,7 +18,10 @@ const Navbar = ({updateUserHandler, users, AuthUserHandler, user, isAuthenticate
             },
         items : {display: 'flex', float: 'right', paddingRight: '20px'},
         item: {listStyle: 'none', padding: '10px'},
-        itemText:{listStyle: 'none', padding: '10px', paddingTop: '17px'}
+        itemText:{listStyle: 'none', padding: '10px', paddingTop: '17px', cursor:'pointer'},
+        hover : {
+            color: 'red'
+        }
     }
 
     let show = (
@@ -28,20 +31,28 @@ const Navbar = ({updateUserHandler, users, AuthUserHandler, user, isAuthenticate
         </ul>
         
     );
+    const logoutHandler = () => {
+        localStorage.clear();
+        window.location.replace('/');
+    }
+
+    const favour = () => window.location.replace('/favourite');
 
     if(isAuthenticated) {
+        const user = JSON.parse(localStorage.getItem('user'));
         show = (
             <ul style={styles.items}>
+                <li style={{...styles.itemText}} onClick={()=>window.location.replace('/home')}><p>Home</p></li>
                 <li style={styles.itemText}><p>Logged In as {user['E-mail'].split('@')[0]}</p></li>
-                <li style={styles.itemText}><p><i class="fas fa-heart" style={{color: 'red'}}/> Favourites</p></li>
-                <li style={styles.item}><button type="button" className="btn btn-default" data-toggle="modal" data-target="#loginModal" >Logout</button></li>
+                <li style={styles.itemText} onClick={favour}><p><i class="fas fa-heart" style={{color: 'red'}}/> Favourites</p></li>
+                <li style={styles.item}><button type="button" className="btn btn-default" data-toggle="modal" data-target="#loginModal" onClick={logoutHandler}>Logout</button></li>
             </ul>
         );
     }
     return (
         
-        <nav className="sticky-top" style={styles.navbar}>
-            <img src={Logo} height="50"  style={styles.logo}/>
+        <nav style={styles.navbar}>
+            <img src={Logo} height="50"   style={styles.logo}/>
             {show}
             <LoginModal users={users} AuthUserHandler={AuthUserHandler}/> 
             <SignupModal updateUserHandler={updateUserHandler}/>

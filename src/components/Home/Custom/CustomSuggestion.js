@@ -1,7 +1,6 @@
 import React from 'react'
 
-const CustomSuggestion = ({tiles}) => {
-    const url = 'https://cdns-images.dzcdn.net/images/artist/e1913fff012a231e86c300395171dc81/250x250-000000-80-0-0.jpg';
+const CustomSuggestion = ({tiles, lang}) => {
     const img1 = tiles[0].artist.picture_medium;
     const img2 = tiles[4].artist.picture_medium;
     const img3 = tiles[3].artist.picture_medium;
@@ -27,7 +26,7 @@ const CustomSuggestion = ({tiles}) => {
                 </div>
             </div>
             <div className="col-md-10" style={{paddingTop: '50px'}}>
-                <h1>I'm in Love: Hindi</h1>
+                <h1>I'm in Love: {lang}</h1>
                 <p>By Google Play Music</p>
                 <p>The most memorable way to tell someone you are falling in love with them is through music. Feel the love.</p>
                 <div className="row" style={{width:'280px'}}>
