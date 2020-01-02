@@ -30,7 +30,7 @@ class Home extends Component {
     }
 
     submitHandler = search => this.setState({search});
-
+    
     render() {
         const {search, data, isLoading} = this.state;
 
@@ -54,7 +54,7 @@ class Home extends Component {
                                 <CustomSuggestion tiles={tiles} lang = {this.props.user.languages[0]}/>
                                 <Artist artist={artist} favouritesHandler={this.props.favouritesHandler}/>
                             </Fragment>
-                        ) : <Author search={search}/>
+                        ) : <Author  search={search}/>
                     }
                         
                     </div>

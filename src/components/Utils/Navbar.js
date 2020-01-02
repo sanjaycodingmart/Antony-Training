@@ -3,8 +3,9 @@ import Logo from '../../Image/Logo.png';
 import LoginModal from './Modal/LoginModal';
 import SignupModal from './Modal/SignupModal';
 
-const Navbar = ({updateUserHandler, users, AuthUserHandler, isAuthenticated}) => {
-    console.log(isAuthenticated)
+const Navbar = props => {
+    const {updateUserHandler, users, AuthUserHandler, isAuthenticated, newprops} = props;
+    console.log(newprops);
 
     const styles = {
         navbar: {

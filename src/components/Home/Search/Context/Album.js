@@ -7,19 +7,20 @@ class Album extends Component {
         datas: null,
         show: [],
         card: 0,
-        loading: false
+        loading: true
     }
 
-    componentDidMount = () => {
+    componentWillMount = () => {
+        
         this.setState({datas: this.props.datas});
         const {datas, show} = this.state;
         // console.log(datas.splice(0,5))
-        this.setState({show: [...show, ...this.props.datas.splice(0,5)]});
+        this.setState({show: [...show, ...this.props.datas.splice(0,5)], loading: false});
         this.scrollListner = window.addEventListener('scroll',event => {
             this.handleListner(event);
-            
         })
     }
+
 
     handleListner = () => {
         const lastItem = document.getElementById('last');
@@ -41,7 +42,6 @@ class Album extends Component {
     render() {
         if(this.state.datas === null) return <p>Loading . . .</p>
         // const {card} = this.state;
-
         return (
             <div style={{margin:'50px'}}>
                 <div className="row">

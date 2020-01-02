@@ -21,7 +21,8 @@ class Author extends Component {
                             }
                         });
         const data = await response.json();
-        this.setState({data: data.data, isLoading: false})
+        this.setState({data: data.data, isLoading: false});
+       
     }
 
     componentWillMount = async () => {
@@ -39,7 +40,7 @@ class Author extends Component {
                 </div>
             )
         }
-        console.log(data[0])
+        
         return (
             <div>
                 <AuthorDetails search={this.props.search} img={data[0].artist.picture_medium}/>

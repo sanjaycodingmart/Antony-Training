@@ -25,11 +25,20 @@ const InputFeild = ({submitHandler}) => {
         }
     }
     const searchIcon = <i class="fa fa-search" aria-hidden="true"></i>;
+    const clear = () => setInput('');
     const inputHandler = event => setInput(event.target.value);
     return (
         <div className="container" style={styles.container}>
                 <input type="text" style={styles.input} placeholder='Search for Artist, Music, Podcast . . .' value={input} onChange={inputHandler}></input>
-                <button className="btn" style={styles.btn} onClick={()=>submitHandler(input)}>{searchIcon} Search</button>
+                <button 
+                    className="btn" 
+                    style={styles.btn} 
+                    onClick={()=>{
+                        submitHandler(input)
+                        clear()
+                        }}>
+                            {searchIcon} Search
+                </button>
         </div>
     )
 }

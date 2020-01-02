@@ -66,9 +66,8 @@ class App extends Component {
     const {users, isAuthenticated, user} = this.state;
     // const user = localStorage.getItem('user');
     return (
-      <div>
         <Router>
-        <Navbar updateUserHandler={this.updateUserHandler} users={users} user={user} isAuthenticated={isAuthenticated} AuthUserHandler={this.AuthUserHandler}/>
+        <Navbar updateUserHandler={this.updateUserHandler} users={users} user={user} isAuthenticated={isAuthenticated} AuthUserHandler={this.AuthUserHandler} newprops={this.props}/>
           <Switch>
             {
               isAuthenticated ? (
@@ -78,12 +77,11 @@ class App extends Component {
                   <Route exact path="/artist/:id" render={props => <Artist {...props}  favouritesHandler={this.favouritesHandler}/>}/>
                   <Route exact path="/favourite" component={Favourite} />
                 </React.Fragment>
-              ) : null
+              ) : <Route path="/" component={()=> <Index/>} />
             }
-            <Route path="/" component={()=> <Index/>} />
+            
           </Switch>
         </Router>
-      </div>
     )
   }
 }
