@@ -1,0 +1,13 @@
+const express = require('express');
+const path = require('path');
+const { getRegister, postRegister } = require(path.join('..','controllers','Register'));
+
+const Route = express.Router();
+
+// Register Route
+
+Route.get('/register', getRegister);
+Route.post('/register',postRegister);
+
+
+module.exports = Route;
